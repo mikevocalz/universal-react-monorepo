@@ -1,170 +1,121 @@
-import { Text, View, ScrollView, Pressable } from "react-native";
-import { Card } from "ui";
+import { Text, View, ScrollView, Pressable, Linking } from "react-native";
+import { Image } from "expo-image";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Link } from "expo-router";
+import { Header } from "../../../components";
+
+const technologies = [
+  {
+    name: "Turborepo",
+    description: "High-performance build system with intelligent caching",
+    image: require("../../../../assets/images/turborepo-dark.svg"),
+  },
+  {
+    name: "Next.js 16",
+    description: "React framework with App Router for the web",
+    image: require("../../../../assets/images/next.svg"),
+  },
+  {
+    name: "Expo SDK 54",
+    description: "React Native framework with Expo Router",
+    image: require("../../../../assets/images/expo-wordmark.png"),
+  },
+  {
+    name: "NativeWind",
+    description: "Tailwind CSS for React Native",
+    image: require("../../../../assets/images/nativewind-logo.jpeg"),
+  },
+];
+
 export default function Home() {
   return (
-    <SafeAreaView className="flex-1 bg-gray-50" edges={['top', 'left', 'right']}>
+    <SafeAreaView className="flex-1 bg-white" edges={['top', 'left', 'right']}>
+      <Header showNav />
+
       <ScrollView
-        className="flex-1 px-4"
+        className="flex-1"
         showsVerticalScrollIndicator={false}
-        contentContainerClassName="py-6"
       >
         {/* Hero Section */}
-        <View className="items-center mb-8">
-          <View className="w-16 h-16 bg-blue-600 rounded-2xl items-center justify-center mb-4">
-            <Text className="text-2xl">🚀</Text>
-          </View>
-          <Text className="text-3xl font-bold text-gray-900 text-center mb-3">
-            React Native Monorepo
+        <View className="px-6 py-12 items-center">
+          <Text className="text-4xl font-bold text-gray-900 tracking-tight mb-4 text-center">
+            Build once, run everywhere
           </Text>
-          <Text className="text-lg text-gray-600 text-center px-4 mb-6">
-            Cross-platform template with shared UI components
+          <Text className="text-lg text-gray-600 leading-relaxed text-center mb-8">
+            A production-ready monorepo template for building cross-platform applications with shared components between React Native and Next.js.
           </Text>
 
-          {/* Social Links */}
-          <View className="flex-row items-center gap-3 px-4">
-            <Text className="text-xs text-gray-500">⭐ Star repo</Text>
-            <Text className="text-xs text-gray-400">•</Text>
-            <Text className="text-xs text-gray-500">📝 Read guide</Text>
-            <Text className="text-xs text-gray-400">•</Text>
-            <Text className="text-xs text-gray-500">🐦 Follow</Text>
+          <View className="flex-row flex-wrap gap-3 justify-center">
+            <Pressable
+              className="px-5 py-2.5 bg-gray-900 rounded-md active:opacity-80"
+              onPress={() => Linking.openURL("https://github.com/gurselcakar/universal-react-monorepo")}
+            >
+              <Text className="text-white text-sm font-medium">Star on GitHub</Text>
+            </Pressable>
+            <Pressable
+              className="px-5 py-2.5 border border-gray-300 rounded-md active:opacity-80"
+              onPress={() => Linking.openURL("https://gurselcakar.com/writing/monorepo-guide")}
+            >
+              <Text className="text-gray-700 text-sm font-medium">Read Blog Post</Text>
+            </Pressable>
+            <Link href="/(tabs)/demo" asChild>
+              <Pressable className="px-5 py-2.5 active:opacity-80">
+                <Text className="text-gray-500 text-sm font-medium">View Components</Text>
+              </Pressable>
+            </Link>
           </View>
         </View>
-
 
         {/* Tech Stack */}
-        <View className="mb-8">
-          <Text className="text-xl font-semibold text-gray-900 mb-4 text-center">
+        <View className="px-6 pb-8 border-t border-gray-100 pt-8">
+          <Text className="text-2xl font-semibold text-gray-900 mb-8 text-center">
             Tech Stack
           </Text>
-          <View className="gap-3">
-            <Card variant="elevated">
-              <View className="flex-row items-center gap-3">
-                <View className="w-10 h-10 bg-blue-600 rounded-lg items-center justify-center">
-                  <Text className="text-white text-lg">📱</Text>
+          <View className="flex-row flex-wrap gap-6">
+            {technologies.map((tech) => (
+              <View key={tech.name} className="flex-row items-center gap-4 w-[45%]">
+                <View className="w-16 h-16 items-center justify-center">
+                  <Image
+                    source={tech.image}
+                    style={{ width: 64, height: 64 }}
+                    contentFit="contain"
+                  />
                 </View>
                 <View className="flex-1">
-                  <Text className="text-base font-medium text-gray-900">Expo</Text>
-                  <Text className="text-sm text-gray-600">React Native</Text>
+                  <Text className="font-medium text-gray-900">{tech.name}</Text>
+                  <Text className="text-sm text-gray-500">{tech.description}</Text>
                 </View>
               </View>
-            </Card>
-
-            <Card variant="elevated">
-              <View className="flex-row items-center gap-3">
-                <View className="w-10 h-10 bg-black rounded-lg items-center justify-center">
-                  <Text className="text-white text-sm font-bold">N</Text>
-                </View>
-                <View className="flex-1">
-                  <Text className="text-base font-medium text-gray-900">Next.js 15</Text>
-                  <Text className="text-sm text-gray-600">React framework</Text>
-                </View>
-              </View>
-            </Card>
-
-            <Card variant="elevated">
-              <View className="flex-row items-center gap-3">
-                <View className="w-10 h-10 bg-cyan-500 rounded-lg items-center justify-center">
-                  <Text className="text-white text-lg">🎨</Text>
-                </View>
-                <View className="flex-1">
-                  <Text className="text-base font-medium text-gray-900">Tailwind v3</Text>
-                  <Text className="text-sm text-gray-600">NativeWind</Text>
-                </View>
-              </View>
-            </Card>
-
-            <Card variant="elevated">
-              <View className="flex-row items-center gap-3">
-                <View className="w-10 h-10 bg-red-500 rounded-lg items-center justify-center">
-                  <Text className="text-white text-sm font-bold">T</Text>
-                </View>
-                <View className="flex-1">
-                  <Text className="text-base font-medium text-gray-900">Turborepo</Text>
-                  <Text className="text-sm text-gray-600">Monorepo</Text>
-                </View>
-              </View>
-            </Card>
+            ))}
           </View>
-        </View>
-
-        {/* What's Included */}
-        <View className="mb-8">
-          <Text className="text-xl font-semibold text-gray-900 mb-4 text-center">
-            What&apos;s Included
-          </Text>
-          <Card variant="elevated">
-            <View className="gap-3">
-              <View className="flex-row items-center gap-3">
-                <Text className="text-green-600 text-sm">✓</Text>
-                <Text className="text-gray-700 flex-1">Shared UI package</Text>
-              </View>
-              <View className="flex-row items-center gap-3">
-                <Text className="text-green-600 text-sm">✓</Text>
-                <Text className="text-gray-700 flex-1">TypeScript setup</Text>
-              </View>
-              <View className="flex-row items-center gap-3">
-                <Text className="text-green-600 text-sm">✓</Text>
-                <Text className="text-gray-700 flex-1">Cross-platform styling</Text>
-              </View>
-              <View className="flex-row items-center gap-3">
-                <Text className="text-green-600 text-sm">✓</Text>
-                <Text className="text-gray-700 flex-1">Development scripts</Text>
-              </View>
-              <View className="flex-row items-center gap-3">
-                <Text className="text-green-600 text-sm">✓</Text>
-                <Text className="text-gray-700 flex-1">Build configuration</Text>
-              </View>
-              <View className="flex-row items-center gap-3">
-                <Text className="text-green-600 text-sm">✓</Text>
-                <Text className="text-gray-700 flex-1">Clean architecture</Text>
-              </View>
-            </View>
-          </Card>
         </View>
 
         {/* Quick Start */}
-        <View className="mb-8">
-          <Card>
-            <View className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-4">
-              <Text className="text-lg font-semibold text-gray-900 mb-3 text-center">
-                Quick Start
-              </Text>
-              <View className="bg-gray-900 rounded p-3 mb-3">
-                <Text className="text-green-400 font-mono text-sm">pnpm install</Text>
-                <Text className="text-green-400 font-mono text-sm">pnpm dev</Text>
-              </View>
-              <Text className="text-sm text-gray-600 text-center">
-                Starts both web and mobile apps with hot reload
-              </Text>
-            </View>
-          </Card>
+        <View className="px-6 pb-8 border-t border-gray-100 pt-8">
+          <Text className="text-2xl font-semibold text-gray-900 mb-8 text-center">
+            Quick Start
+          </Text>
+          <View className="bg-gray-900 rounded-lg p-5">
+            <Text className="text-gray-400 font-mono text-sm mb-2"># Clone and install</Text>
+            <Text className="text-gray-100 font-mono text-sm mb-1">
+              <Text className="text-gray-500">$ </Text>git clone https://github.com/gurselcakar/universal-react-monorepo.git
+            </Text>
+            <Text className="text-gray-100 font-mono text-sm mb-1">
+              <Text className="text-gray-500">$ </Text>cd universal-react-monorepo
+            </Text>
+            <Text className="text-gray-100 font-mono text-sm mb-3">
+              <Text className="text-gray-500">$ </Text>pnpm install
+            </Text>
+            <Text className="text-gray-400 font-mono text-sm mb-2"># Start development</Text>
+            <Text className="text-gray-100 font-mono text-sm">
+              <Text className="text-gray-500">$ </Text>pnpm dev
+            </Text>
+          </View>
+          <Text className="text-sm text-gray-500 text-center mt-4">
+            Runs both web and mobile apps simultaneously with hot reload
+          </Text>
         </View>
 
-        {/* Demo */}
-        <View className="items-center">
-          <Card variant="elevated">
-            <View className="items-center p-2">
-              <Text className="text-lg font-semibold text-gray-900 mb-2 text-center">
-                Demo
-              </Text>
-              <Text className="text-sm text-gray-600 text-center mb-4">
-                Shared components working across platforms
-              </Text>
-
-              <Link href="/(tabs)/demo" asChild>
-                <Pressable className="bg-blue-600 px-6 py-2 rounded-lg active:opacity-80">
-                  <View className="flex-row items-center gap-2">
-                    <Text className="text-white text-sm">🎨</Text>
-                    <Text className="text-white font-medium text-sm">View Components</Text>
-                    <Text className="text-white text-sm">→</Text>
-                  </View>
-                </Pressable>
-              </Link>
-            </View>
-          </Card>
-        </View>
       </ScrollView>
     </SafeAreaView>
   );
