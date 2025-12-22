@@ -7,8 +7,8 @@
         "inputs": ["$TURBO_DEFAULTS$", ".env*"],
         "outputs": [".next/**", "!.next/cache/**"]
       },
-      "check-types": {
-        "dependsOn": ["^check-types"]
+      "typecheck": {
+        "dependsOn": ["^typecheck"]
       },
       "lint": {
         "dependsOn": ["^lint"]

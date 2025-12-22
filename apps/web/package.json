@@ -7,7 +7,7 @@
     "build": "next build --webpack",
     "start": "next start --webpack",
     "lint": "eslint",
-    "check-types": "tsc --noEmit"
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "next": "16.1.0",

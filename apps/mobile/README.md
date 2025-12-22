@@ -1,86 +1,39 @@
-# 📱 Mobile App (Expo)
+# Mobile App
 
-The React Native mobile app built with Expo and NativeWind for cross-platform styling.
+Expo-based React Native application demonstrating cross-platform component sharing with the web app using NativeWind and shared UI components.
 
-## 🚀 Quick Start
+## Technologies
+
+- **Expo SDK 54**: React Native framework with Expo Router for file-based navigation
+- **React Native 0.81.5**: Cross-platform mobile development
+- **NativeWind 4.x**: Tailwind CSS styling for React Native
+- **Expo Router 6.x**: File-based routing with tab navigation
+- **Shared UI Components**: Reusable components from `packages/ui/`
+
+## Development Commands
 
 ```bash
-# From project root
-pnpm --filter mobile dev
-
-# Or from this directory
 pnpm dev        # Start Metro bundler
-pnpm ios        # Open iOS simulator  
+pnpm ios        # Open iOS simulator
 pnpm android    # Open Android emulator
 pnpm web        # Open in browser
 ```
 
-## 🏗️ Architecture
+## Key Features
 
-This app demonstrates:
-- **Expo Router**: File-based routing with tab navigation
-- **Shared UI Components**: Uses components from `packages/ui/`
-- **NativeWind**: Tailwind CSS classes for consistent styling
-- **Cross-Platform**: Same code runs on iOS, Android, and web
+- **File-based routing** with Expo Router (tab navigation)
+- **NativeWind styling** with Tailwind CSS classes
+- **Shared components** from the monorepo UI package
+- **Cross-platform support** for iOS, Android, and web
+- **New Architecture** enabled for improved performance
+- **TypeScript** with full type safety
 
-## 📁 Key Files
+## Configuration
 
-```
-apps/mobile/
-├── src/app/
-│   ├── (tabs)/
-│   │   ├── (home)/         # Home tab
-│   │   └── demo/           # Demo tab
-│   ├── _layout.tsx         # Root layout
-│   └── index.tsx           # Entry redirect
-├── tailwind.config.js      # NativeWind configuration
-└── package.json            # Dependencies & scripts
-```
+- **app.json**: Expo configuration with plugins for routing, splash screen, and fonts
+- **tailwind.config.js**: NativeWind setup with shared UI package paths
+- **metro.config.js**: Metro bundler configuration for monorepo support
 
-## 🎨 Styling
+## Learn More
 
-Uses NativeWind for Tailwind CSS classes on React Native components:
-
-```tsx
-<View className="flex-1 bg-gray-50 p-4">
-  <Text className="text-2xl font-bold text-gray-900">
-    Styled with Tailwind
-  </Text>
-</View>
-```
-
-## 🔧 Development
-
-- **Hot Reload**: Enabled for fast development
-- **TypeScript**: Full type safety
-- **Expo Router**: File-based navigation
-- **Safe Area**: Proper handling with `react-native-safe-area-context`
-
-## 📦 Key Dependencies
-
-- `expo` - React Native platform
-- `expo-router` - File-based routing
-- `nativewind` - Tailwind for React Native
-- `ui` - Shared component library
-- `react-native-safe-area-context` - Safe area handling
-
-## 🚀 Building & Deployment
-
-```bash
-# Development build
-eas build --profile development
-
-# Production builds
-eas build --platform ios
-eas build --platform android
-
-# Submit to app stores
-eas submit
-```
-
-## 📚 Learn More
-
-- [Expo Documentation](https://docs.expo.dev/)
-- [Expo Router](https://docs.expo.dev/router/introduction/)
-- [NativeWind Guide](https://www.nativewind.dev/)
-- [EAS Build & Submit](https://docs.expo.dev/build/introduction/)
+For detailed setup and architecture information, see the [blog post](https://gurselcakar.com/writing/monorepo-guide) or check the main repository README.

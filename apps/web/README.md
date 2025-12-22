@@ -1,118 +1,64 @@
-# 🌐 Web App (Next.js)
+# Web App
 
-The web application built with Next.js 15 and React Native Web for cross-platform component compatibility.
+Next.js web application with React Native Web integration for cross-platform component sharing.
 
-## 🚀 Quick Start
+## Tech Stack
+
+- **Next.js 16.1.0** - React framework with App Router
+- **React 19** - Latest React with Server Components
+- **React Native Web** - Renders React Native components as HTML
+- **NativeWind** - Cross-platform Tailwind CSS styling
+- **Shared UI Components** - From `packages/ui/` workspace
+
+## Development
 
 ```bash
-# From project root
-pnpm --filter web dev
-
-# Or from this directory
-pnpm dev        # Start development server
-pnpm build      # Build for production
-pnpm start      # Start production server
+pnpm dev          # Start development server (localhost:3000)
+pnpm build        # Build for production
+pnpm start        # Start production server
+pnpm lint         # Run ESLint
+pnpm typecheck  # TypeScript type checking
 ```
 
-Open [http://localhost:3000](http://localhost:3000) to view the app.
+## Key Features
 
-## 🏗️ Architecture
-
-This app demonstrates:
-- **Next.js 15**: App Router with Server Components
-- **React Native Web**: Renders React Native components as HTML
-- **Shared UI Components**: Uses components from `packages/ui/`
-- **Hybrid Approach**: Mix React (HTML) and React Native components
-
-## 📁 Key Files
-
-```
-apps/web/
-├── src/app/
-│   ├── page.tsx            # Home page
-│   ├── nativewind/         # Shared components demo
-│   └── layout.tsx          # Root layout
-├── next.config.ts          # Next.js + RN Web config
-├── tailwind.config.js      # Tailwind configuration
-└── package.json            # Dependencies & scripts
-```
-
-## 🎨 Mixing React & React Native
-
-You can seamlessly mix HTML elements with React Native components:
+### Cross-Platform Component Support
+The app uses React Native Web to share components with the mobile app. Both HTML elements and React Native components work seamlessly together:
 
 ```tsx
 export default function Page() {
   return (
-    <div className="container">           {/* HTML element */}
-      <header className="header">         {/* HTML element */}
-        <Button                           {/* React Native component */}
-          title="Shared Component"
-          onPress={() => alert('Works!')}
-        />
-      </header>
+    <div className="container">
+      <Button title="Shared Component" onPress={() => {}} />
     </div>
   );
 }
 ```
 
-## ⚙️ Configuration
-
-### React Native Web Setup
+### Next.js Configuration
 The `next.config.ts` handles React Native Web integration:
+- Transpiles React Native packages
+- Aliases `react-native` to `react-native-web`
+- Supports platform-specific extensions (`.web.tsx`, `.web.ts`)
 
-```tsx
-transpilePackages: [
-  'react-native',
-  'react-native-web',
-  'nativewind',
-],
-webpack: (config) => {
-  config.resolve.alias = {
-    'react-native$': 'react-native-web',  // Key transformation
-  };
-  // Platform-specific file extensions
-  config.resolve.extensions = [
-    '.web.ts', '.web.tsx', '.web.js',
-    ...config.resolve.extensions,
-  ];
-}
+### NativeWind Styling
+Tailwind CSS classes work on both HTML elements and React Native components, enabling consistent styling across platforms.
+
+## Structure
+
+```
+apps/web/
+├── src/app/
+│   ├── page.tsx           # Landing page
+│   ├── nativewind/        # Shared components demo
+│   └── layout.tsx         # Root layout
+├── next.config.ts         # Next.js + RN Web config
+├── tailwind.config.js     # Tailwind configuration
+└── package.json           # Dependencies & scripts
 ```
 
-### Tailwind Integration
-Works with both HTML elements and React Native components via NativeWind.
-
-## 🔧 Development Features
-
-- **Hot Reload**: Fast refresh for development
-- **TypeScript**: Full type safety
-- **Server Components**: Next.js 15 App Router
-- **Cross-Platform Components**: Shared with mobile app
-
-## 📦 Key Dependencies
-
-- `next` - React framework
-- `react-native-web` - RN components → HTML
-- `nativewind` - Tailwind for React Native
-- `ui` - Shared component library
-
-## 🚀 Deployment
-
-### Vercel (Recommended)
-```bash
-pnpm build
-# Deploy to Vercel via Git or CLI
-```
-
-### Other Platforms
-```bash
-pnpm build
-# Deploy the `.next` directory to any hosting platform
-```
-
-## 📚 Learn More
+## Learn More
 
 - [Next.js Documentation](https://nextjs.org/docs)
 - [React Native Web](https://necolas.github.io/react-native-web/)
-- [NativeWind Guide](https://www.nativewind.dev/)
-- [Vercel Deployment](https://vercel.com/docs)
+- [NativeWind](https://www.nativewind.dev/)
