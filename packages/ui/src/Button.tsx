@@ -3,18 +3,22 @@ import { tv } from 'tailwind-variants';
 
 const buttonVariants = tv({
   slots: {
-    button: 'px-6 py-3 rounded-lg active:opacity-80',
-    text: 'text-center font-semibold',
+    button: 'px-5 py-2.5 rounded-md active:opacity-80',
+    text: 'text-center font-medium text-sm',
   },
   variants: {
     variant: {
       primary: {
-        button: 'bg-blue-600',
+        button: 'bg-gray-900',
         text: 'text-white',
       },
       secondary: {
-        button: 'bg-gray-200',
+        button: 'bg-gray-100',
         text: 'text-gray-900',
+      },
+      outline: {
+        button: 'bg-transparent border border-gray-300',
+        text: 'text-gray-700',
       },
     },
     disabled: {
@@ -32,7 +36,7 @@ const buttonVariants = tv({
 interface ButtonProps {
   title: string;
   onPress: () => void;
-  variant?: 'primary' | 'secondary';
+  variant?: 'primary' | 'secondary' | 'outline';
   disabled?: boolean;
 }
 

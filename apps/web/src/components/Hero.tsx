@@ -30,6 +30,12 @@ export function Hero() {
           >
             Read the Blog Post
           </Link>
+          <Link
+            href="/nativewind"
+            className="px-6 py-3 text-gray-500 text-sm font-medium hover:text-gray-900 transition-colors"
+          >
+            View Components
+          </Link>
         </div>
       </div>
     </section>
