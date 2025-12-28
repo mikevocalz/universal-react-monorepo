@@ -20,6 +20,12 @@
       ],
       "enabled": true,
       "groupName": "build tooling"
+    },
+    {
+      "matchPackageNames": ["expo"],
+      "enabled": true,
+      "groupName": "expo",
+      "automerge": false
     }
   ]
 }
